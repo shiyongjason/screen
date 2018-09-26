@@ -1,0 +1,96 @@
+<template>
+  <div>
+    <div class="unit">单位：万</div>
+    <div class="companytitle">2018月度销售增长</div>
+    <div id="myChart" :style="{width: '100%', height: '320px'}"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'company',
+  props: ['companydata'],
+  mounted () {
+    this.getOption()
+  },
+  methods: {
+    getOption () {
+    // 基于准备好的dom，初始化echarts实例
+      let myChart = this.$echarts.init(document.getElementById('myChart'))
+      // 绘制图表
+      myChart.setOption({
+        tooltip: {},
+        xAxis: {
+          data: ['1月', '2月', '3月', '4月', '5月', '6月','7月','8月'],
+          axisLine: {
+            lineStyle: {
+              color: '#0077cb'
+            }
+          },
+          axisLabel: {
+            color: '#fff',
+            fontSize: 14
+          }
+        },
+        yAxis: {
+          nameTextStyle: {
+            color: '#fff',
+            fontSize: 16
+          },
+          axisLine: {
+            show:false,
+            lineStyle: {
+              color: '#0077cb'
+            }
+          },
+          axisLabel: {
+            color: '#fff',
+            fontSize: 14
+          },
+          splitLine: {
+            show:true,
+            lineStyle: {
+              color: '#0077cb'
+            }
+          },
+          interval:10000,
+          max:40000
+        },
+        series: [
+          {
+            type: 'bar',
+            barWidth: 30,
+            itemStyle: {
+              normal: {
+                label : {
+                  color:'#fff',
+                  show: true, position: 'top'
+                },
+                color:new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0.5,
+                  color: '#348fff'
+                }, {
+                  offset: 0.8,
+                  color: '#ffcb68'
+                }], false)
+              }
+            },
+            data: [19033, 11641, 20086, 23775, 22918, 27643,25000,30000]// 中心数据
+          }
+        ]})
+    }
+  }
+}
+</script>
+
+<style scoped>
+  #myChart{
+    top:35px;
+    margin-left: 30px;
+  }
+  .unit{
+    position: absolute;
+    right: 55px;
+    top: 20px;
+  }
+</style>

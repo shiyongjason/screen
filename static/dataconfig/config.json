@@ -1,0 +1,160 @@
+﻿{
+  "dataList": {
+    "homeservicedata": [
+      {
+        "dataitem": "其他",
+        "datavalue": "14"
+      },
+      {
+        "dataitem": "小区",
+        "datavalue": "25"
+      },
+      {
+        "dataitem": "老客",
+        "datavalue": "46"
+      },
+      {
+        "dataitem": "线上",
+        "datavalue": "15"
+      }
+    ],
+    "departmentdata": [
+      {
+        "name": "南京分部",
+        "value": "17"
+      },
+      {
+        "name": "山东分部",
+        "value": "15"
+      },
+      {
+        "name": "苏北分部",
+        "value": "10"
+      },
+      {
+        "name": "苏南分部",
+        "value": "10"
+      },
+      {
+        "name": "河南分部",
+        "value": "9"
+      },
+      {
+        "name": "浙江分部",
+        "value": "7"
+      },
+      {
+        "name": "四川分部",
+        "value": "7"
+      },
+      {
+        "name": "湖北分部",
+        "value": "6"
+      },
+      {
+        "name": "湖南分部",
+        "value": "5"
+      },
+      {
+        "name": "上海分部",
+        "value": "5"
+      },
+      {
+        "name": "安徽分部",
+        "value": "5"
+      },
+      {
+        "name": "重庆分部",
+        "value": "4"
+      }
+
+    ],
+    "companydata": [
+      {"dataitem": "徐州万汇联1"},
+      {"dataitem": "淄博万圣联"},
+      {"dataitem": "池州万众联"},
+      {"dataitem": "金华万奥联"},
+      {"dataitem": "济南万赢联"}
+    ],
+    "linedatalist": [
+      {
+        "year": "7月",
+        "yearvalue": "3000"
+      },
+      {
+        "year": "8月",
+        "yearvalue": "2000"
+      },
+      {
+        "year": "9月",
+        "yearvalue": "9000"
+      },
+      {
+        "year": "10月",
+        "yearvalue": "1000"
+      },
+      {
+        "year": "11月",
+        "yearvalue": "1000"
+      }
+    ],
+    "saleherolist": [
+      {
+        "saleid": 1,
+        "salename": "张力",
+        "salepos": "南京分部好享家销售",
+        "saletitle": "总经理",
+        "salecount": "125",
+        "salebg": "frtop0",
+        "salebottomcount": "salebottomcount0",
+        "saletoprightpos": "saletoprightpos0",
+        "saletoprighttitle": "saletoprighttitle0",
+        "saleheader": "./static/img/header1.png"
+      },
+      {
+        "saleid": 2,
+        "salename": "王姗姗",
+        "salepos": "南京分部好享家销售",
+        "saletitle": "总经理",
+        "salecount": "98",
+        "salebg": "frtop1",
+        "salebottomcount": "salebottomcount1",
+        "saletoprightpos": "saletoprightpos1",
+        "saletoprighttitle": "saletoprighttitle1",
+        "saleheader": "./static/img/header2.png"
+      },
+      {
+        "saleid": 3,
+        "salename": "李风峰",
+        "salepos": "南京分部好享家销售",
+        "saletitle": "总经理",
+        "salecount": "88",
+        "salebg": "frtop2",
+        "salebottomcount": "salebottomcount2",
+        "saletoprightpos": "saletoprightpos2",
+        "saletoprighttitle": "saletoprighttitle2",
+        "saleheader": "./static/img/header3.png"
+      }
+    ],
+    "environmentinfo": [
+      {"humidity": "45%"},
+      {"VOC": "0.21ppm"},
+      {"noise": "38dB" },
+      {"servicecount":"135537"}
+    ],
+    "toptem": [
+      {"name":"江苏万信连","value":35.8},
+      {"name":"济南万佳连","value":31.8},
+      {"name":"杭州万挞连","value":29.8},
+      {"name":"成都万牛连","value":28.6},
+      {"name":"昆山万诚连","value":22.2},
+      {"name":"上海万系连","value":21.7},
+      {"name":"河南万意连","value":19.3},
+      {"name":"徐州万恒连","value":18.3},
+      {"name":"泰安市万家连","value":18.0},
+      {"name":"岳阳万鑫连","value":17.7}
+    ],
+    "_switchname": "注释：默认是map 可选项: map,video,text",
+    "switchname": "map"
+  }
+}

@@ -1,0 +1,118 @@
+
+body{
+  margin:0px;
+}
+.maincontent{
+  width: 1910px;
+  height:1070px;
+  background: url("../assets/mainbg.png");
+  padding: 5px;
+}
+.mainbg{
+  position: absolute;
+  height: 1070px;
+  /*background: url("../assets/mainbg.png");*/
+}
+.fheight{
+  height: 1060px;
+}
+.fl{
+  float:left;
+  width:1270px;
+  /*border: solid 1px #ff4845;*/
+}
+.fr{
+  width:636px;
+  float:right;
+  /*border: solid 1px #8F6DFF;*/
+  margin: 0 auto;
+}
+.map{
+  height:710px;
+  border:solid 1px #179aff;
+  position: relative;
+}
+.mapbg{
+  background: url("../assets/map.png") no-repeat center bottom;
+  /* background-size: cover; */
+}
+.flbtm{
+  margin-top: 4px;
+}
+.month{
+  float:left;
+  border:solid 1px #179aff;
+  position: relative;
+}
+.homeservice{
+  float:right;
+  border:solid 1px #179aff;
+  position: relative;
+}
+.environment{
+  border:solid 1px #179aff;
+  margin: 0 auto;
+  position: relative;
+}
+.department{
+  border:solid 1px #179aff;
+  margin: 6px auto;
+  position: relative;
+}
+.company{
+  border:solid 1px #179aff;
+  margin: 8px auto;
+  position: relative;
+}
+.fl-item{
+  height: 349px;
+  width: 630px;
+}
+.canvaslinetitle{
+  position: absolute;
+  color: #B5CDF0;
+  font-size: 25px;
+  left: 15px;
+  top:15px;
+}
+.homeservicetitle{
+  position: absolute;
+  color: #B5CDF0;
+  font-size: 25px;
+  left: 15px;
+  top:15px;
+}
+.environmenttitle{
+  position: absolute;
+  color: #B5CDF0;
+  font-size: 25px;
+  left: 15px;
+  top:15px;
+}
+.departmenttitle{
+  position: absolute;
+  color: #B5CDF0;
+  font-size: 25px;
+  left: 15px;
+  top:15px;
+}
+.companytitle{
+  position: absolute;
+  color: #B5CDF0;
+  font-size: 25px;
+  left: 15px;
+  top:15px;
+}
+.maptitle
+{
+  position: absolute;
+  color: #B5CDF0;
+  font-size: 25px;
+  left: 15px;
+  top:15px;
+}
+
+
+
+
+

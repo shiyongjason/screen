@@ -1,0 +1,160 @@
+<template>
+  <div>
+    <div class="environmenttitle">{{nowDate | custDateFromat}}</div>
+    <div class="temperature">{{temperature}}&#176</div>
+    <div class="week">{{weekday}}</div>
+    <div class="environmentfr">
+      <div class="environmenttitletop">室内湿度</div>
+      <div class="environmentvalue">{{dataArr[0].humidity}}</div>
+      <div class="environmenttitlemid">VOC</div>
+      <div class="environmentvalue">{{dataArr[1].VOC}}</div>
+      <div class="environmenttitlebtm">噪音值</div>
+      <div class="environmentvalue">{{dataArr[2].noise}}</div>
+    </div>
+    <img src="../assets/environment.png" class="environmentimg">
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'environment',
+  props: ['environmentinfo'],
+  data () {
+    return {
+      nowDate: Date.now(),
+      dataArr: [{}, {}, {}],
+      temperature: '',
+      weekdays: [
+        {'weekdayindex': '0', 'weekdayname': '星期日'},
+        {'weekdayindex': '1', 'weekdayname': '星期一'},
+        {'weekdayindex': '2', 'weekdayname': '星期二'},
+        {'weekdayindex': '3', 'weekdayname': '星期三'},
+        {'weekdayindex': '4', 'weekdayname': '星期四'},
+        {'weekdayindex': '5', 'weekdayname': '星期五'},
+        {'weekdayindex': '6', 'weekdayname': '星期六'}
+      ],
+      weekdayindex: '',
+      weekday: ''
+    }
+  },
+  mounted () {
+    // 计算星期几
+    this.weekdayindex = new Date(this.nowDate).getDay()
+    this.weekday = this.weekdays[this.weekdayindex].weekdayname
+
+    this.dataArr = this.environmentinfo
+    this.doGetWeatherInfoByTime()
+    this.doGetNowTime()
+    console.log('我是气温' + this.$store.state.show)
+    this.$store.state.show = true
+    console.log('我是气温' + this.$store.state.show)
+  },
+  methods: {
+    /**
+     * 调用阿里云天气api
+     *  city:城市
+     * @returns {Promise<void>}
+     */
+    async getWeatherInfo () {
+      let dataParams = {}
+      dataParams.city = '南京'
+      let respData = await this.$axios.getWeather(dataParams).catch(err => {
+        console.log(err)
+      })
+      respData = JSON.parse(respData) // 读取出来的是json字符串，转换成json对象
+
+      if (respData.status === '0') {
+        this.temperature = respData.result.temp
+      } else {
+        // 官方的api接口没有返回实例暂时不知道啥情况
+         this.temperature = 26
+      }
+    },
+    /**
+     * 定时调用获取天气的接口
+     */
+    doGetWeatherInfoByTime () {
+      console.log('调用一次接口')
+      this.getWeatherInfo() // 先调用一次 然后每隔一个小时调用一次
+      setInterval(() => {
+        console.log('调用一次接口')
+        this.getWeatherInfo()
+      }, 3600000)
+    },
+    /**
+     * 定时获取当前的时间 5分钟获取一次吧
+     */
+    doGetNowTime () {
+      setInterval(() => {
+        console.log('调用时间')
+        this.nowDate = Date.now()
+      }, 300000)
+    }
+  },
+  filters: {
+    custDateFromat: function (input) {
+      var d = new Date(input)
+      var year = d.getFullYear()
+      var month = d.getMonth() + 1
+      var day = d.getDate() < 10 ? '0' + d.getDate() : '' + d.getDate()
+      return year + '年' + month + '月' + day + '日'
+    }
+  }
+}
+</script>
+
+<style scoped>
+  .environmentimg{
+    position: absolute;
+    margin: auto;
+    left:0;
+    right:40%;
+    top:10%;
+    bottom:0;
+  }
+  .environmentfr{
+    float: right;
+    text-align: left;
+    /* margin-right: 100px; */
+    width: 180px;
+    height: 350px;
+    font-size: 20px;
+    color:#B5CDF0;
+    /*background-color: #00ff00;*/
+  }
+  .environmentvalue{
+    width:145px;
+    height:45px;
+    border:solid 1px #179aff;
+    line-height: 45px;
+    text-align: left;
+    padding-left: 10px;
+    color: #ffffff;
+  }
+  .environmenttitletop{
+    margin-top:35px;
+    margin-bottom: 10px;
+  }
+  .environmenttitlemid{
+    margin-top:15px;
+    margin-bottom: 10px;
+  }
+  .environmenttitlebtm{
+    margin-top:15px;
+    margin-bottom: 10px;
+  }
+  .temperature{
+    position: absolute;
+    color: #ffffff;
+    left: 145px;
+    font-size: 60px;
+    top: 145px;
+  }
+  .week{
+    position: absolute;
+    color: #ffffff;
+    left: 150px;
+    font-size: 25px;
+    top: 210px;
+  }
+</style>

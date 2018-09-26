@@ -1,0 +1,136 @@
+<template>
+  <div>
+    <div class="departmenttitle">2018累计销售占比</div>
+    <!--<div class="divimg">-->
+      <!--<img src="../assets/department.png">-->
+    <!--</div>-->
+    <!--<div class="departmentul">-->
+      <!--<div class="warpper">-->
+          <!--<div class="parent" ref="scroll">-->
+          <!--<div v-for="(item,index) of dataArr" :key="item.dataitem"  class="li">-->
+          <!--<div class="departmentname">{{item.name}}</div>-->
+          <!--<div class="departmentvalue">占比{{item.value}}%</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div id="myChart2" :style="{width: '620px', height: '350px'}"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'department',
+  props: ['departmentdata'],
+  data () {
+    return {
+      ctx: null,
+      canvaspie: null,
+      dataArr: [],
+      colorArry: [
+        { color: '#fba354' },
+        { color: '#ff6d50' },
+        { color: '#af56ff' },
+        { color: '#6b40eb' },
+        { color: '#4695f6' },
+        { color: '#4c7ffa' }
+      ],
+      canvasbj: 'white', // 画布背景
+      cWidth: 0,
+      cHeight: 0,
+      bigBg: 'red', // 大圆背景
+      bigRadius: 110, // 大圆半径
+      midRadius: 72, // 中圆
+      smallRadius: 60, // 小圆半径
+      deg: 360 * Math.PI / 180, //
+      skewing: 28 // 偏移
+    }
+  },
+  mounted () {
+    console.log('我是子组件')
+    this.dataArr = this.departmentdata
+    console.log(this.dataArr)
+    this.drawPieChart()
+  },
+  methods: {
+    drawPieChart () {
+      var data = this.dataArr
+      // 基于准备好的dom，初始化echarts实例
+      let myChart = this.$echarts.init(document.getElementById('myChart2'))
+      // 绘制图表
+      myChart.setOption({
+        color: [
+          '#467af5',
+          '#edb26c',
+          '#f07c61',
+          '#ae55ff',
+          '#2da0ec',
+          '#eeb26b'
+        ],
+        series: [
+          {
+            name: '占比',
+            type: 'pie',
+            radius: ['40%', '60%'],
+            center: ['45%', '58%'],
+            avoidLabelOverlap: true,
+            data: data,
+            itemStyle: {
+              normal: {
+                borderColor: '#179aff', // 描边色
+                borderWidth: 1
+              }
+            },
+            label: {
+              normal: {
+                show: true,
+                formatter: '{b}   {d}%',
+                textStyle: {
+                  color: '#fff',
+                  fontSize: '16'
+                }
+              },
+              emphasis: {
+                show: true,
+                textStyle: {
+                  //fontSize: '16',
+                }
+              }
+            },
+            labelLine: {
+              normal: {
+                show: true,
+              }
+            }
+          }
+        ]
+      })
+    }
+  }
+}
+</script>
+
+<style scoped>
+.divimg {
+  position: absolute;
+  left: 350px;
+  top: 68px;
+}
+.departmentul {
+  position: absolute;
+  list-style: none; /* 去掉ul前面的符号 */
+  margin: 0px; /* 与外界元素的距离为0 */
+  padding: 0px; /* 与内部元素的距离为0 */
+  left: 400px;
+  top: 70px;
+  width: 200px;
+}
+.departmentul .li {
+  overflow: hidden;
+  margin-bottom: 17px;
+}
+#myChart2{
+  margin-left: 25px;
+  margin-top: -10px;
+}
+</style>
